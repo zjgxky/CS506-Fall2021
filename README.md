@@ -6,4 +6,4 @@ Code, slides, and notes for Boston University CS506 Fall 2021
 
 ___
 
-The Final Project Repository can be found [here](https://github.com/BU-Spark/CS506Fall2021Repository)
+The Final Project Repository can be found [here](https://github.com/BU-Spark/)
