@@ -20,8 +20,13 @@ Create a virtualenv in this folder (for windows users, please see https://progra
     virtualenv -p python3 <name-of-your-virtual-env>
 ```
 
-Activate the virtualenv:
+Activate the virtualenv on Windows:
 
+```bash
+    source <name-of-your-virtual-env>/Scripts/activate
+```
+
+Otherwise:
 ```bash
     source <name-of-your-virtual-env>/bin/activate
 ```
