@@ -6,6 +6,12 @@ This is an example python package for implementing and re-using tools learned in
 
 You need to have python3 and [pip installed](https://www.makeuseof.com/tag/install-pip-for-python/) on your laptop. If you are using windows, please take a look at [this resource](https://docs.microsoft.com/en-us/windows/python/beginners) for an example set up (terminal, git, IDE etc.).
 
+Before you get started, please check your python3 version and change the line 3 of the `tox.ini` file accordingly. For example, if you are using python 3.9, the line should be:
+
+```
+envlist = py39
+```
+
 Additionally, I recommend installing [virtualenv](https://pypi.org/project/virtualenv/1.7.1.2/) (pip install this package) to manage the python packages you install for each project you create.
 
 ## Before you Start
@@ -45,6 +51,12 @@ Install all the `requirements.txt`
 
 ```bash
     pip install -r requirements.txt
+```
+
+If this does not work, please install the packages one at a time:
+
+```bash
+    pip install pytest pytest-cov testfixtures tox
 ```
 
 ### Verify your setup
