@@ -2,6 +2,7 @@ from collections import defaultdict
 from math import inf
 import random
 import csv
+from sim import *
 
 
 def point_avg(points):
@@ -11,7 +12,18 @@ def point_avg(points):
     
     Returns a new point which is the center of all the points.
     """
-    raise NotImplementedError()
+    dimensions = len(points[0])
+
+    new_center = []
+
+    for dimension in dimensions:
+        dim_sum = 0  
+        for p in points:
+            dim_sum += p[dimension]
+
+        new_center.append(dim_sum / float(len(points)))
+
+    return new_center
 
 
 def update_centers(dataset, assignments):
@@ -21,7 +33,15 @@ def update_centers(dataset, assignments):
     Compute the center for each of the assigned groups.
     Return `k` centers in a list
     """
-    raise NotImplementedError()
+    new_means = defaultdict(list)
+    centers = []
+    for assignment, point in zip(assignments, dataset):
+        new_means[assignment].append(point)
+
+    for points in new_means.itervalues():
+        centers.append(point_avg(points))
+
+    return centers
 
 def assign_points(data_points, centers):
     """
@@ -43,20 +63,29 @@ def distance(a, b):
     """
     Returns the Euclidean distance between a and b
     """
-    raise NotImplementedError()
+    return sim.euclidean_dist(x, y);
 
 def distance_squared(a, b):
-    raise NotImplementedError()
+    return distance(a,b) ** 2
 
 def generate_k(dataset, k):
     """
     Given `data_set`, which is an array of arrays,
     return a random set of k points from the data_set
     """
-    raise NotImplementedError()
+    random.shuffle(dataset)
+    random_set = []
+    for i in range(k):
+        random_set.append(dataset[i])
+    return random_set
 
 def cost_function(clustering):
-    raise NotImplementedError()
+    cost = 0
+    for cluster in clustering:
+        pavg = point_avg(cluster)
+        for p in cluster:
+            cost += distance_squared(p, pavg)
+    return cost
 
 
 def generate_k_pp(dataset, k):
